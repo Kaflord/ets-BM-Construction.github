@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ets B.M Construction  - RDC</title>
+    <!-- Polices Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--light);
+            color: #333;
+        }
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: white;
+            margin: 0 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: var(--secondary);
+        }
+        section {
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        /* Slider Réalisations */
+        .slider {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+        .slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .slider-nav {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .slider-nav button {
+            background: var(--primary);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* Témoignages */
+        .testimonials {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .testimonial {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 300px;
+        }
+        .testimonial i {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        /* Formulaire */
+        form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        .social-links {
+            margin: 1rem 0;
+        }
+        .social-links a {
+            color: white;
+            margin: 0 1rem;
+            font-size: 1.5rem;
+        }
+        /* Sélecteur de langue */
+        .language-switcher {
+            text-align: right;
+            padding: 1rem;
+            background: rgba(0,0,0,0.05);
+        }
+        .language-switcher select {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Section Paramètres */
+        #settings {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 2rem auto;
+            border: 1px solid #ddd;
+        }
+        #dev-tools div {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        #api-response {
+            background: #34495e;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-top: 1rem;
+            min-height: 100px;
+            color: #ecf0f1;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sélecteur de langue -->
+    <div class="language-switcher">
+        <select id="language">
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+        </select>
+    </div>
+
+    <!-- En-tête -->
+    <header>
+        <h1>ETS B.M CONSTRUCTION & DIVERS</h1>
+        <p>Innovation et savoir-faire au service de vos projets</p>
+        <p><a href="http://www.google.com"><img src="image/bill.jpg" alt="logo de l'Ets"/></a></p>
+		
+    </header>
+
+    <!-- Menu -->
+    <nav>
+        <a href="#home">Accueil</a>
+        <a href="#realisations">Nos Réalisations</a>
+		<a href="#contact">Actualité</a>
+        <a href="#contact">Contact</a>
+        <a href="#settings" onclick="showSettings()"><i class="fas fa-user-secret"></i> Dev</a>
+    </nav>
+
+    <!-- Section Accueil -->
+    <section id="home">
+	    <h2>Bienvenue chez Ets B.M CONSTRUCTION ET DIVERS</h2>
+		 <p> Nous sommes ravis de vous accueillir dans notre entreprise, specialisée dans la construction et les servises divers. Notre équipe d'expert est dediée à réaliser vos projets avec precision et professionnalisme. que vous soyez un particulier ou un professionnel, nous sommes là pour vous accompagner à chaque étape, de la conception à la realisation. N'hesitez pas à nous contacter pour discuter de vos besoins. :</p>
+        <h3>Notre Histoire</h3>
+        <p>Fondé par <strong>Mr BILL MULUNDA William</strong>, Ets B.M Construction est un leader dans le secteur de la construction et vente des produits alimentaires et divers en République Démocratique du Congo. Notre expertise s'étend sur :</p>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0;">
+            <div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i> Construction</h3>
+                <p>Bâtiments résidentiels et commerciaux sur mesure, finissage, peinturage, plafonnage, carrelage et jardinage</p>
+            </div>
+            <div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-tools"></i> Rénovation</h3>
+                <p>Batir des reves,construire l'avenir. avec plus de 10ans d'experience, notre équipe des professionnels est prete à réaliser tous vos projets, qu'il s'agisse des maisons indivuelles ,d'immeubles ou des rénovations  </p>
+            </div>
+            <div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-truck"></i> Matériaux</h3>
+                <p>Nous utilisons des materiaux ecologiques et des techniques innovantes pour des constructions durables qui respectent l'environnement.</p>
+            </div>
+			<div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-diverse"></i>divers</h3>
+                <p>Nous mettrons à votre disposition des produits de premiers necessités: produits laitiers, viande et poisson, Fruits et Legumes, Epice et huiles,produit liquides,produits hygienique, les produits d'entetiens et des vetements de base</p>
+            </div>
+        </div>
+		<h3>Vision</h3>
+        <p> chez<strong> Ets B.M construction</strong>,nous aspirons à redefinir le paysage de la construction en creyant des espaces qui allient esthetique, fonctionnalité et durabilité. notre vision repose sur les piliers suivants: </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0;">
+		    <div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i> Innovation</h3>
+				<p>Nous nous engageons à integrer les dernieres technologies et materiaux dans nos projets,afin d'offrir des solutions modernes et efficaces </p>
+			 </div>
+		    <div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i> Durabilité</h3>
+				<p>Nous croyons en la construction responsable. Notre objectif est de minimiser notre enpreinte ecologique tout en creyant des batiments qui respectent l'environnement.</p>
+		    </div>
+		    <div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i>Qualité</h3>
+				<p>La satisfaction de nos clients est au coeur de notre demarche. nous nous efforcons de depasser les attentes grace à des standards de qualités élevés à chaque etape de nos projets.</p>
+		    </div>
+		    <div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i>Collaboration</h3>
+				<p>Nous valorisons le travail d'équipe et la collaboration avec nos clients, partenaires et fournisseurs. ensemble nous construisons des projets qui refletent les aspirations et les besoins de la communauté.</p>
+		    </div>
+		    <div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i>Excellence</h3>
+				<p>Nous visons l'excellence dans tout ce que nous faisons, en prenant soin de chaque detail et en garantissant un service exceptionnel.</p>
+		    </div>
+		</div>
+        <a href="https://maps.google.com" class="btn" target="_blank">
+            <i class="fas fa-map-marker-alt">Avenu: KISAMBI Numero: 8666 Quartier: Lido golf Commune : Lubumbashi Province : Haut katanga Pays: RDC</i> Voir sur Google Maps
+        </a>
+		<h3>Equipe et Membres clés</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0;">
+		<div style="flex: 1; min-width: 250px; background: yellow; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i> BILL MULUNDA William</h3>
+		  <p>Fondateur et president de l'etablissement</p>
+		</div> 
+		<div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i>MIAKA MBEMBA Djofils</h3>
+		  <p>Ingenieur</p>
+		</div> 
+		<div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i>NYEMBA MULUNDA Christelle</h3>
+		  <p>Avocate conseil</p>
+		</div> 
+		<div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i> KAHENGA KITENGE Kaflord</h3>
+		  <p>Ingenieur Informaticien</p>
+		</div>
+		<div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i> BINDANDA LUNDEMBA Jean Marc</h3>
+		  <p>Comptable</p>
+		</div>
+	 </div>
+	     <h2 style="text-align: center;">PRODUITS ET SERVICE</h2>
+	<div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0;">
+		<div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h2><i class="fas fa-home"></i> 1. DESCRIPTION DETAILLEE</h2>
+				<p><strong>construction et ammenagement interrieur:</strong> finissage,carrelage, plafonnage, peinturage,jardinage et vente de produits divers</p>
+		</div>
+		<div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h2><i class="fas fa-home"></i> 2.TARIF</h2>
+				<p><strong>Voici notre grille tarifaire:</strong> <a href="grille.docx">Télecharger le fichier</a>!</p>
+		</div>
+    </section>
+    <!-- Section Réalisations -->
+    <section id="realisations" style="background: #f9f9f9;">
+        <h2 style="text-align: center;">Nos Réalisations</h2>
+        <!-- Slider -->
+        <div class="slider">
+            <div class="slides">
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVpbGRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60" alt="Projet 1">
+                    <div class="slide-caption">
+                        <h3>Résidence Les Palmiers (Kinshasa)</h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YnVpbGRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60" alt="Projet 2">
+                    <div class="slide-caption">
+                        <h3>Complexe Commercial (Lubumbashi)</h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJ1aWxkaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60" alt="Projet 3">
+                    <div class="slide-caption">
+                        <h3>Villa Moderne (Goma)</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Témoignages -->
+        <h3 style="text-align: center; margin-top: 3rem;">Ce que nos clients disent</h3>
+        <div class="testimonials">
+            <div class="testimonial">
+                <i class="fas fa-quote-left"></i>
+                <p>"Le professionnalisme de B.M Construction m'a impressionné. Délais respectés et qualité exceptionnelle."</p>
+                <p><strong>- Mr Kabasele, Kinshasa</strong></p>
+            </div>
+            <div class="testimonial">
+                <i class="fas fa-quote-left"></i>
+                <p>"J'ai fait confiance à Mr Bill pour ma villa. Résultat au-delà de mes attentes !"</p>
+                <p><strong>- Mme Ngalula, Lubumbashi</strong></p>
+            </div>
+        </div>
+    </section>
+	<!-- Section actualiré-->
+    <section id="realisations" style="background: #f9f9f9;">
+            <h2 style="text-align: center;">Actualité</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0;">
+            <div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i> Durabilité et construction ecologique:</h3>
+				 <p><strong>.</strong> Materiaux ecologiques: l'usage croissant des materiaux durables comme le bois 
+				 certifié FSC et le beton recyclé.
+			    </p>
+                 <p><strong>.</strong> Normes de construction verte: l'importance des certifications comme LEED ou BREEAM pour les nouveaux projets. 
+			    </p>
+			</div>
+			<div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i> Technologie dans la Construction:</h3>
+				<p><strong>.</strong> MIB(Modelisation de l'Information du batiment): adoption de la modelisation numerique pour ameliorer 
+				l'efficacité et la collaboration.
+			    </p>
+				<p><strong>.</strong> Drones et Robots: utilisation croissante de la technologie pour surveiller le chantier et executer les taches repetitives.
+			    </p>
+			</div>
+		    <div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i> Reglementations et normes:</h3>
+				<p><strong>.</strong> changements legislatifs : impact de nouvelles lois sur la securité et la durabilité 
+			    </p>
+				<p><strong>.</strong> securité au travail: renforcement des normes de securité pour reduire les accidents sur les chantiers.
+			    </p>
+			</div>
+			<div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i> Marché et Economie:</h3>
+				<p><strong>.</strong> fluctuations des prix des materiaux: suivu des variations de couts des materiaux de Constructionen raison de la chaine d'approvisionnement
+			    </p>
+				<p><strong>.</strong> Tendance du marché: analyse des secteurs en croissance , comme la construction residentielle ou les infrastructures vertes.
+			    </p>
+			</div>
+			<div style="flex: 1; min-width: 250px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3><i class="fas fa-home"></i> Formation et competences :</h3>
+				<p><strong>.</strong> Manque de main d'oeuvre: strategies pour attirer et former des nouveaux travailleurs dans l'industrie.
+			    </p>
+				<p><strong>.</strong> Programmes de formation: initiatives visant à ameliorer les competences de travailleurs en matiere de nouvelles Technologies.
+			    </p>
+			</div>
+		</div>
+	</section>
+    <!-- Section Contact -->
+    <section id="contact">
+        <h2 style="text-align: center;">Contactez-Nous</h2>
+        
+        <form action="kkaflord@gmail.com" method="POST">
+            <input type="text" name="name" placeholder="Votre nom complet" required>
+            <input type="email" name="email" placeholder="Votre email" required>
+            <input type="tel" name="phone" placeholder="Votre téléphone">
+            <textarea name="message" placeholder="Votre message..." rows="5" required></textarea>
+            <button type="submit" class="btn">
+                <i class="fas fa-paper-plane"></i> Envoyer
+            </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="https://wa.me/243998887188" class="btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="www.linkedin.com/in/bill-mulunda-1a557437a"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>&copy; 2023 Ets B.M Construction - Tous droits réservés</p>
+        <p>Fondé par Mr Bill M.</p>
+    </footer>
+
+    <!-- ==================== SECTION PARAMÈTRES DÉVELOPPEUR ==================== -->
+    <section id="settings" style="display: none;">
+        <h2 style="text-align: center; color: var(--dark);">
+            <i class="fas fa-cogs"></i> Console Développeur
+        </h2>
+        
+        <div id="dev-login" style="text-align: center; margin: 2rem 0;">
+            <h3>Accès Ingénieur Kaflord</h3>
+            <input type="password" id="dev-password" placeholder="Mot de passe" 
+                   style="padding: 0.8rem; width: 60%; border: 1px solid #ddd; border-radius: 5px;">
+            <button onclick="unlockDevTools()" class="btn" style="margin-top: 1rem;">
+                <i class="fas fa-lock-open"></i> Déverrouiller
+            </button>
+        </div>
+        
+        <div id="dev-tools" style="display: none;">
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem;">
+                <div>
+                    <h3><i class="fas fa-heartbeat"></i> Santé du Site</h3>
+                    <p id="site-health">Vérification non effectuée</p>
+                    <button onclick="runSiteDiagnostic()" class="btn" style="background: var(--primary);">
+                        <i class="fas fa-play"></i> Diagnostiquer
+                    </button>
+                </div>
+                
+                <div>
+                    <h3><i class="fas fa-database"></i> Export des Données</h3>
+                    <select id="export-format" style="width: 100%; padding: 0.5rem; margin: 0.5rem 0;">
+                        <option value="csv">CSV (Excel)</option>
+                        <option value="json">JSON</option>
+                    </select>
+                    <button onclick="exportData()" class="btn" style="background: #27ae60;">
+                        <i class="fas fa-download"></i> Exporter
+                    </button>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; background: #2c3e50; padding: 1.5rem; border-radius: 8px; color: white;">
+                <h3><i class="fas fa-code"></i> API Console</h3>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <input type="text" id="api-endpoint" placeholder="Endpoint (ex: /api/clients)" 
+                           style="flex: 1; padding: 0.8rem; border-radius: 5px; border: none;">
+                    <button onclick="callApi()" class="btn" style="background: #f39c12;">
+                        <i class="fas fa-paper-plane"></i> Envoyer
+                    </button>
+                </div>
+                <pre id="api-response">Résultat de l'API s'affichera ici...</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script>
+        // Slider
+        let currentSlide = 0;
+        const slides = document.querySelector('.slides');
+        
+        function showSlide(n) {
+            currentSlide = (n + 3) % 3;
+            slides.style.transform = translateX(-${currentSlide * 100}%);
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        // Multilingue basique
+        function changeLanguage() {
+            const lang = document.getElementById('language').value;
+            alert(Fonctionnalité à implémenter : Basculer en ${lang}.);
+        }
+        
+        // ==================== FONCTIONS DÉVELOPPEUR ====================
+        function showSettings() {
+            document.getElementById('settings').style.display = 'block';
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        function unlockDevTools() {
+            if (document.getElementById('dev-password').value === "Kaflord2023") {
+                document.getElementById('dev-login').style.display = 'none';
+                document.getElementById('dev-tools').style.display = 'block';
+                alert("Accès développeur autorisé. Bienvenue, Ingénieur Kaflord !");
+            } else {
+                alert("Accès refusé. Mot de passe incorrect.");
+            }
+        }
+
+        function runSiteDiagnostic() {
+            document.getElementById('site-health').innerHTML = `
+                <i class="fas fa-circle-notch fa-spin"></i> Analyse en cours...
+            `;
+            
+            setTimeout(() => {
+                const issues = Math.floor(Math.random() * 3);
+                document.getElementById('site-health').innerHTML = `
+                    <span style="color: ${issues === 0 ? '#2ecc71' : '#e74c3c'}">
+                        <i class="fas fa-${issues === 0 ? 'check-circle' : 'exclamation-triangle'}"></i>
+                        ${issues === 0 ? 'Aucun problème détecté' : ${issues} alerte(s)}
+                    </span>
+                    <ul style="text-align: left; margin-top: 0.5rem;">
+                        <li>Temps de chargement : 1.2s</li>
+                        <li>Liens vérifiés : 12/12 valides</li>
+                        <li>SEO : Score 92/100</li>
+                    </ul>
+                `;
+            }, 1500);
+        }
+
+        function exportData() {
+            const format = document.getElementById('export-format').value;
+            alert([Fonctionnalité complète à implémenter]\nExport des données en ${format.toUpperCase()} préparé.);
+        }
+
+        function callApi() {
+            const endpoint = document.getElementById('api-endpoint').value;
+            document.getElementById('api-response').textContent = "Requête en cours...";
+            
+            setTimeout(() => {
+                const mockResponses = {
+                    "/api/clients": JSON.stringify([
+                        { id: 1, name: "Client A", email: "clientA@example.com" },
+                        { id: 2, name: "Client B", email: "clientB@example.com" }
+                    ], null, 2),
+                    "/api/projects": JSON.stringify([
+                        { id: 101, title: "Projet Kinshasa", status: "Terminé" },
+                        { id: 102, title: "Projet Lubumbashi", status: "En cours" }
+                    ], null, 2)
+                };
+                
+                document.getElementById('api-response').textContent = 
+                    mockResponses[endpoint] || {"error": "Endpoint non reconnu", "suggestions": ["/api/clients", "/api/projects"]};
+            }, 800);
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(0);
+        });
+    </script>
+</body>
+</html>
